@@ -7,20 +7,29 @@ import ProfilePage from "./pages/ProfilePage.jsx";
 import Register from "./pages/Register.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.Jsx";
+import AuthProvider from "./providers/AuthProvider.jsx";
+import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />,
+    element: <PrivateRoutes />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/me",
+        element: <ProfilePage />,
+      },
+    ],
   },
+
   {
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/me",
-    element: <ProfilePage />,
-  },
+
   {
     path: "/register",
     element: <Register />,
@@ -33,6 +42,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

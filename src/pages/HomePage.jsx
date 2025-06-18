@@ -3,7 +3,7 @@ import Header from "../components/common/Header";
 const HomePage = () => {
   return (
     <div>
-      <Header />
+      <h1>HOmepage</h1>
     </div>
   );
 };
