@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../assets/useAuth";
+import { useAuth } from "../hooks/useAuth";
 import Header from "../components/common/Header";
 
 const PrivateRoutes = () => {
@@ -9,8 +9,8 @@ const PrivateRoutes = () => {
     <>
       {auth.user ? (
         <main className="">
-          <div className="container ">
-            <Header />
+          <Header />
+          <div className="container max-w-screen-xl mx-auto">
             <Outlet />
           </div>
         </main>
