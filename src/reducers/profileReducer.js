@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-const profileReducer = (action, state) => {
+const profileReducer = (state, action) => {
   switch (action.type) {
     case actions.profile.DATA_FETCHING: {
       return {
@@ -28,6 +28,23 @@ const profileReducer = (action, state) => {
         ...state,
         loading: false,
         error: action.error,
+      };
+    }
+    case actions.profile.USER_DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: action.data,
+      };
+    }
+    case actions.profile.IMAGE_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          avatar: action.data.avatar,
+        },
       };
     }
 

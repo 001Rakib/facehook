@@ -1,8 +1,6 @@
 import LwsLogo from "../../assets/images/logo.svg";
 import HomeIcon from "../../assets/icons/home.svg";
 import NotificationIcon from "../../assets/icons/notification.svg";
-
-import Avatar from "../../assets/images/avatars/avatar_1.png";
 import { Link } from "react-router-dom";
 import Logout from "../auth/Logout";
 import { useAuth } from "../../hooks/useAuth";
@@ -42,7 +40,7 @@ const Header = () => {
               {user?.lastName}
             </span>
             <img
-              className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
+              className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px] rounded-full"
               src={`${import.meta.env.VITE_SERVER_BASE_URL}/${user.avatar}`}
               alt="Profile_Image"
             />
