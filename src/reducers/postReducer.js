@@ -14,13 +14,15 @@ const postReducer = (state, action) => {
         loading: true,
       };
     }
+
     case actions.post.DATA_FETCHED: {
       return {
         ...state,
-        loading: false,
         posts: action.data,
+        loading: false,
       };
     }
+
     case actions.post.DATA_FETCH_ERROR: {
       return {
         ...state,
@@ -29,9 +31,34 @@ const postReducer = (state, action) => {
       };
     }
 
+    case actions.post.DATA_CREATED: {
+      return {
+        ...state,
+        loading: false,
+        posts: [...state.posts, action.data],
+      };
+    }
+
+    case actions.post.POST_DELETED: {
+      return {
+        ...state,
+        loading: false,
+        posts: state.posts.filter((item) => item.id !== action.data),
+      };
+    }
+
+    case actions.post.DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: action.data,
+      };
+    }
+
     default: {
       return state;
     }
   }
 };
-export { postReducer, initialState };
+
+export { initialState, postReducer };
